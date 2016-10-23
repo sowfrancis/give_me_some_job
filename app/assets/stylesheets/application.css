@@ -15,6 +15,11 @@
  *= require bootstrap-tagsinput
  */
 
+
+body{
+	background-color: #F5F5DC;
+
+}
 .container{
 	width: 90%;
 }
@@ -33,11 +38,12 @@
 
 .job_img{
 	width: 100px;
-	margin-top: 10px;
 }
 
 .card-shit{
 	margin: 50px;
+	background-color: #FFFFFF;
+	box-shadow: 10px 10px 5px #888888;
 }
 
 .job_place{
@@ -52,6 +58,26 @@
 .bootstrap-tagsinput{
 	margin-left: 15px;
 	width: 97%;
+}
+
+.search_bar{
+	width: 100%
+}
+
+.desc{
+	margin: 20px;
+}
+.home{
+	width: 80%;
+	margin-top: 150px;
+	padding: 20px;
+	text-align: center;
+}
+
+.job_right{
+	background-color: #FFFF;
+	padding: 30px;
+	box-shadow: 10px 10px 5px #888888;
 }
 /* user profile */
 

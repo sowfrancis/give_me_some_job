@@ -8,12 +8,11 @@
           <%= image_tag @user.userimg.url %>
       </div>
       <div class="info">
-          <div class="title">
-            <%= @user.fullname %>
-          </div>
-          <div class="desc"><%= @user.description %></div>
-          <div class="desc">Curious developer</div>
-          <div class="desc"><%= @user.address %></div>
+        <div class="title">
+          <%= @user.fullname %>
+        </div>
+        <div class="desc"><%= @user.description %></div>
+        <div class="desc"><h4><%= @user.address %></h4></div>
       </div>
       <div class="bottom">
         <%= link_to "Editer", edit_user_path(@user) %>

@@ -16,8 +16,8 @@
       <ul class="nav navbar-nav">
         <% if user_signed_in? || recruiter_signed_in? %>
           <% if recruiter_signed_in? %>
-            <li><%= link_to "Poster un Job", new_job_path %></li>
             <li><%= link_to "Profile", recruiter_path(current_recruiter) %></li>
+            <li><%= link_to "Poster un Job", new_job_path %></li>
           <% end %>
           <li><%= link_to "Jobs", jobs_path %></li>
           <% if user_signed_in? %>
