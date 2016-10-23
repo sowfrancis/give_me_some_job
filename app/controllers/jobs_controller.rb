@@ -3,9 +3,11 @@ class JobsController < ApplicationController
 	has_scope :in_place_named
 	has_scope :name_tag
 
+	before_action :authenticate_user!, except: [:index, :show]
+
 	def index
 		@jobs = Job.all
-		if @search
+		if params[:search]
    	  @jobs = Job.search(params[:search]).order('created_at DESC')
   	else
 			@jobs = Job.all.order('created_at DESC')

@@ -1,5 +1,7 @@
 class RecruitersController < ApplicationController
 
+	before_action :authenticate_user!
+
 	def show 
 		@recruiter = Recruiter.find(params[:id])
 		@jobs = @recruiter.jobs.order(created_at: :desc)
