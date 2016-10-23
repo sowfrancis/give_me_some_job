@@ -5,10 +5,8 @@ class JobsController < ApplicationController
 
 	def index
 		@jobs = Job.all
-		@search = Job.search(params[:search]) 
 		if @search
-   	  @jobs = apply_scopes(Job).all.order('created_at DESC')
-   	 binding.pry
+   	  @jobs = Job.search(params[:search]).order('created_at DESC')
   	else
 			@jobs = Job.all.order('created_at DESC')
 		end
