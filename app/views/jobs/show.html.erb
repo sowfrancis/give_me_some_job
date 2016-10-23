@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 job_right">
+			<div class="col-md-3 job_img">
+				<%= image_tag @job.jobimg.url, class: "job_img" %>
+			</div>
+			<div class="col-md-4 job_place">
+				<div class="job_name">
+					<h3><%= @job.name %></h3>
+				</div>
+				<div class="job_info">
+					<%= @job.address %> | <%= @job.created_at.strftime('%d-%m-%Y') %>
+				</div>
+				<div class="job_info">
+					<%= @job.recruiter.email %> | <%= @job.contact%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr/>
+	<h4>Description</h4>
+	<div class="job_description">
+		<%= @job.description %>
+	</div>
+
+	<div class="edit_job">
+		<% if recruiter_signed_in? %>
+			<% if current_recruiter.id == @job.recruiter.id %>
+				<%= link_to "Editer", edit_job_path(@job), class: "btn btn-primary" %>
+			<% end %>
+		<% end %>
+	</div>
+</div>

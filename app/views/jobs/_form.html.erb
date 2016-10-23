@@ -1,0 +1,52 @@
+'<div class="container">
+  <div class="form">
+    <%= simple_form_for @job, :html => {:class => "form-horizontal"} do |f| %>
+      <div class="form-group">
+        <%= f.label "Nom de la société"%>
+        <div>
+          <%= f.text_field :name, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "logo/image" %>
+        <div>
+          <%= f.file_field :jobimg %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "description du job" %>
+        <div>
+          <%= f.text_area :description, size: "50x10", :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Téléphone" %>
+        <div>
+          <%= f.text_field :contact, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Tags" %>
+        <div>
+          <%= f.input :tag_list, :input_html => {data: {role:'tagsinput'}, class: "form-control"}, label: false %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "lieu" %>
+        <div>
+          <%= f.text_field :address, id: "autocomplete", :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_PLACES_API"] %>&libraries=places&callback=initAutocompleteChallengeForm&language=<%= I18n.locale %>"
+        async defer></script>
