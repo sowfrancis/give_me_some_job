@@ -3,7 +3,7 @@ class JobsController < ApplicationController
 	has_scope :in_place_named
 	has_scope :name_tag
 
-	before_action :authenticate_user!, except: [:index, :show]
+	
 
 	def index
 		@jobs = Job.all

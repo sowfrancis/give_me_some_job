@@ -1,6 +1,6 @@
 class RecruitersController < ApplicationController
 
-	before_action :authenticate_user!
+	before_action :authenticate_recruiter!
 
 	def show 
 		@recruiter = Recruiter.find(params[:id])
