@@ -10,7 +10,12 @@ class TagsController < ApplicationController
 	end
 
 	def index
-		@tags = Tag.all
+		@jobs = Job.all
+		if params[:tag]
+			@jobs = Job.name_tag(params[:tag])
+		else
+			@jobs = Job.all.order('created_at DESC')
+		end
 	end
 
 	private

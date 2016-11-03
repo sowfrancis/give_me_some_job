@@ -1,5 +1,8 @@
 <div class="container">
- 	<% @jobs.each do |job| %>
+	<%= render 'search_bar/search_bar' %>
+</div>
+<div class="container">
+	<% @jobs_tag.each do |job| %>
  		<div class="card-shit">
 			<div class="media block-update-card">
 		  	<%= link_to job_path(job), class: "pull-left" do %>
@@ -25,3 +28,4 @@
 		</div>
 	<% end %>
 </div>
+

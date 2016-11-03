@@ -13,9 +13,9 @@ class Job < ActiveRecord::Base
 		near(place_name)
 	}
 
-	scope :name_tag, -> (name) {
-		Tag.find_by_name!(name).jobs
-	}
+	def self.name_tag(name)
+		joins(:tags).where(tags: {name: name})
+	end
 
 	def self.search(search)
 		in_place_named("%#{search}%")
