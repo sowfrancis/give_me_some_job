@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create, :new, :update, :edit]
   resources :recruiters, only: [:create, :show, :edit, :update]
   resources :tags, only: [:index,:create, :new]
-  get 'jobs/job_tag' => 'jobs#job_tag'
+  resources :searchs, only: [:index]
+  get 'tags/', to: 'jobs#index', as: "search_tag"
 
   root 'homepages#index'
   # The priority is based upon order of creation: first created -> highest priority.

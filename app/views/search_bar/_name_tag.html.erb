@@ -2,16 +2,16 @@
 	<div class="row">
     <div class="col-md-6">
 			<h2>Un job prés de chez toi?</h2>
-				<%= form_for :job_tag , url: jobs_path, html: { :method => "get", id: "search-form"} do |f| %>
+				<%= form_tag searchs_path, :method => 'get', html: { id: "search-form"} do |f|%>
           <div id="custom-search-input">
-              <div class="input-group col-md-12">
-                  <%= f.text_field_tag :job_tag, params[:tag], class: "form-control input-lg", placeholder: "Search jobs"%>
-                  <span class="input-group-btn">
-                    <%= button_tag(type: "submit", class: "btn btn-default") do %>
-										  search 
-										<% end %>
-                  </span>
-              </div>
+            <div class="input-group col-md-12">
+              <%= text_field_tag :q, nil, :placeholder => 'Search jobs by tags', class: "form-control input-lg" %>
+              <span class="input-group-btn">
+                 <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                    search 
+                  <% end %>
+              </span>
+            </div>
           </div>
         <% end %>
     </div>

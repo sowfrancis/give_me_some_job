@@ -3,15 +3,13 @@ class JobsController < ApplicationController
 	has_scope :in_place_named
 	has_scope :name_tag
 
-	
-
 	def index
-		@jobs = Job.all
+		@jobs = Job.all.order('created_at DESC')
 		if params[:search]
-   	  @jobs = Job.search(params[:search]).order('created_at DESC')
-  	else
-			@jobs = Job.all.order('created_at DESC')
-		end
+   	 @jobs = Job.search(params[:search])
+ 	 	else
+    	@jobs = Job.all.order('created_at DESC')
+  	end		
 	end
 
 	def create
@@ -45,12 +43,13 @@ class JobsController < ApplicationController
 		end
 	end
 
-	def job_tag
+	def search_tag
+		@jobs = Job.all
 		if params[:tag]
-    	@jobs = Job.name_tag(params[:tag])
-  	else
-    	@jobs = Job.all
-  	end
+			@jobs = Job.name_tag(params[:tag])
+		else
+			@jobs = Job.all.order('created_at DESC')
+		end
 	end
 
 	private
