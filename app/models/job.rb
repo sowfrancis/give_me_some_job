@@ -13,9 +13,9 @@ class Job < ActiveRecord::Base
 		near(place_name)
 	}
 
-	def self.name_tag(name)
+	scope :name_tag, -> (name) {
 		joins(:tags).where(tags: {name: name})
-	end
+	}
 
 	def self.search(search)
 		in_place_named("%#{search}%")
@@ -29,5 +29,9 @@ class Job < ActiveRecord::Base
 
 	def tag_list
 	  self.tags.map(&:name).join(", ")
+	end
+
+	def distance
+		near("#{self.address}", 50, latitude: self.latitude, longitude: self.longitude)
 	end
 end

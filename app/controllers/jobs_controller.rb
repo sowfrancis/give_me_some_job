@@ -4,12 +4,11 @@ class JobsController < ApplicationController
 	has_scope :name_tag
 
 	def index
-		@jobs = Job.all.order('created_at DESC')
 		if params[:search]
    	 @jobs = Job.search(params[:search])
  	 	else
     	@jobs = Job.all.order('created_at DESC')
-  	end		
+  	end 
 	end
 
 	def create
@@ -42,16 +41,7 @@ class JobsController < ApplicationController
 			render "edit"
 		end
 	end
-
-	def search_tag
-		@jobs = Job.all
-		if params[:tag]
-			@jobs = Job.name_tag(params[:tag])
-		else
-			@jobs = Job.all.order('created_at DESC')
-		end
-	end
-
+	
 	private
 
 	def job_params
