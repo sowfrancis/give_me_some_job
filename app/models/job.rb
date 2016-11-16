@@ -3,6 +3,8 @@ class Job < ActiveRecord::Base
 	has_many :tags, through: :taggings, :dependent => :destroy
 	belongs_to :recruiter
 
+	validates_presence_of :name, :description, :jobimg, :address, :contact
+
 
 	mount_uploader :jobimg, JobImgUploader
 
@@ -29,9 +31,5 @@ class Job < ActiveRecord::Base
 
 	def tag_list
 	  self.tags.map(&:name).join(", ")
-	end
-
-	def distance
-		near("#{self.address}", 50, latitude: self.latitude, longitude: self.longitude)
 	end
 end

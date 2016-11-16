@@ -14,6 +14,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'bootstrap-tagsinput-rails'
 gem 'tagsinput-rails'
 gem 'has_scope'
+gem 'meta_request'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
