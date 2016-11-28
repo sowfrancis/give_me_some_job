@@ -1,8 +1,5 @@
 class JobsController < ApplicationController
 
-	has_scope :in_place_named
-	has_scope :name_tag
-
 	def index
 		if params[:search]
    	 @jobs = Job.search(params[:search])
