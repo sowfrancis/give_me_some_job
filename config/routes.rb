@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :recruiters, only: [:create, :show, :edit, :update]
   resources :tags, only: [:index,:create, :new]
   resources :searchs, only: [:index]
+  resources :candidacies, only: [:create]
   get 'tags/', to: 'jobs#index', as: "search_tag"
 
   root 'homepages#index'

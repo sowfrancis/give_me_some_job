@@ -29,5 +29,9 @@
 				<% end %>
 			<% end %>
 		</div>
+		<%= form_for @candidacy do |f| %>
+			<%= f.hidden_field :job_id, value: @job.id%>
+			<%= f.submit %>
+		<% end %>
 	</div>
 </div>
