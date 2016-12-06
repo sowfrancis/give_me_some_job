@@ -9,9 +9,7 @@
 <body>
 	<%= render "layouts/nav_bar"%>
 	<div class="container">
-		<% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
+  <%= render "layouts/flash" %>
 		<%= yield %>
 	</div>
 
