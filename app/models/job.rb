@@ -3,7 +3,7 @@ class Job < ActiveRecord::Base
 	has_many :tags, through: :taggings, :dependent => :destroy
 	belongs_to :recruiter
 
-	validates_presence_of :name, :description, :jobimg, :address, :contact
+	validates_presence_of :name, :description, :address, :contact
 
 
 	mount_uploader :jobimg, JobImgUploader
