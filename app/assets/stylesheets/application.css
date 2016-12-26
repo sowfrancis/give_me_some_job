@@ -26,6 +26,11 @@ body{
 
 .form{
 	margin: auto;
+	width: 85%;
+}
+
+.form_group{
+	width: 60%;
 }
 
 .job_cards{
@@ -382,6 +387,8 @@ body{
 	border: 1px solid;
 	border-color: whitesmoke; 
 }
+
+
 /*
 Creating a block for social media buttons
 */

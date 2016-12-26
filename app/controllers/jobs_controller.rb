@@ -1,11 +1,11 @@
 class JobsController < ApplicationController
 
 	def index
-		if params[:search]
-   	 @jobs = Job.search(params[:search])
- 	 	else
+		if params[:q]
+    	@jobs = Job.search(params[:q])
+  	else
     	@jobs = Job.all.order('created_at DESC')
-  	end 
+		end
 	end
 
 	def create
