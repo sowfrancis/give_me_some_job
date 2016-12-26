@@ -1,0 +1,2 @@
+<%= @recruiter.name %>
+Félicitations vous venez de creer une mission.
