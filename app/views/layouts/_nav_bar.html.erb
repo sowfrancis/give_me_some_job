@@ -23,7 +23,7 @@
           <% if user_signed_in? %>
             <li><%= link_to "Profile", user_path(current_user) %></li>
           <% end %>
-          <li><%= link_to "Se deconnecter", destroy_user_session_path, method: :delete %></li>
+          <li class="pull-right"><%= link_to "Se deconnecter", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li class="active"><%= link_to "Home", root_path %></li>
           <li><%= link_to "Jobs", jobs_path %></li>
