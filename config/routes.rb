@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :searchs, only: [:index]
   resources :candidacies, only: [:create]
   get 'tags/', to: 'jobs#index', as: "search_tag"
+  get 'searchs/search' => 'searchs#search'
 
   root 'homepages#index'
   # The priority is based upon order of creation: first created -> highest priority.

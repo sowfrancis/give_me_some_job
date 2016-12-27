@@ -1,8 +1,9 @@
 class SearchsController < ApplicationController
 
-	def index
-		@q = params[:q]
-		@jobs_tag = Job.name_tag(@q) #all job near position
-		@jobs_place = Job.in_place_named(@q) #job with tag
+	def search 
+	  @jobs = Job.search params[:q]
+	  @jobs.each do |job|
+	  	puts job.name
+	  end
 	end
 end

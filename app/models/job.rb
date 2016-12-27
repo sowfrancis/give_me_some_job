@@ -1,4 +1,10 @@
+require 'elasticsearch/model'
+
 class Job < ActiveRecord::Base
+	include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  searchkick
+
 	has_many :taggings
 	has_many :tags, through: :taggings, :dependent => :destroy
 	belongs_to :recruiter
@@ -19,8 +25,10 @@ class Job < ActiveRecord::Base
 		joins(:tags).where(tags: {name: name})
 	}
 
-	def self.search(search)
-		in_place_named("%#{search}%")
+	def search_data
+		attributes.merge(
+      tag_names: tags.map(&:name)
+    )
 	end
 
 	def tag_list=(names)
@@ -33,3 +41,4 @@ class Job < ActiveRecord::Base
 	  self.tags.map(&:name).join(", ")
 	end
 end
+

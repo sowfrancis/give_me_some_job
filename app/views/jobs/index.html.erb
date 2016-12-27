@@ -1,30 +1,36 @@
 <div class="container">
-	<%= render 'search_bar/search_bar' %>
+	<%= render 'search_bar/search' %>
 </div>
-<div class="container">
- 	<% @jobs.each do |job| %>
- 		<div class="card-shit">
-			<div class="media block-update-card">
-		  	<%= link_to job_path(job), class: "pull-left" do %>
-		    	<%= image_tag job.jobimg.url, class: "job_img" %>
-		    <% end %>
-			  <div class="media-body update-card-body">
-			    <h4 class="media-heading"><%= job.name %></h4>
-			    <div class="btn-toolbar card-body-social" role="toolbar">
-			      <div class="btn-group fa fa-github-alt git"></div>
-			      <div class="btn-group linkedin fa fa-linkedin-square"></div>
-			      <div class="btn-group twitter fa fa-twitter"></div>
-			      <div class="btn-group facebook fa fa-facebook"></div>
-			      <div class="btn-group google-plus fa fa-google-plus"></div>
+<% if params[:q].present? %>
+	<div class="container">
+		<%= render 'searchs/search_result' %>
+	</div>
+<% else %>
+	<div class="container">
+	 	<% @jobs.each do |job| %>
+	 		<div class="card-shit">
+				<div class="media block-update-card">
+			  	<%= link_to job_path(job), class: "pull-left" do %>
+			    	<%= image_tag job.jobimg.url, class: "job_img" %>
+			    <% end %>
+				  <div class="media-body update-card-body">
+				    <h4 class="media-heading"><%= job.name %></h4>
+				    <div class="btn-toolbar card-body-social" role="toolbar">
+				      <div class="btn-group fa fa-github-alt git"></div>
+				      <div class="btn-group linkedin fa fa-linkedin-square"></div>
+				      <div class="btn-group twitter fa fa-twitter"></div>
+				      <div class="btn-group facebook fa fa-facebook"></div>
+				      <div class="btn-group google-plus fa fa-google-plus"></div>
+				    </div>
+				  </div>
+				</div>
+			  <div class="block-update-card status">
+			    <div class="update-card-body">
+			      <h4><%= job.address %></h4>
+			      <p><%= job.description %></p>
 			    </div>
-			  </div>
+				</div>
 			</div>
-		  <div class="block-update-card status">
-		    <div class="update-card-body">
-		      <h4><%= job.address %></h4>
-		      <p><%= job.description %></p>
-		    </div>
-			</div>
-		</div>
-	<% end %>
-</div>
+		<% end %>
+	</div>
+<% end %>
