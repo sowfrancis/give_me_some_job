@@ -1,7 +1,18 @@
 <%= form_for searchs_path, method: :get do |f| %>
-  <p>
-    <%= f.label "Search for" %>
-    <%= text_field_tag :q, params[:q] %>
-    <%= submit_tag "Go", name: nil %>
-  </p>
+  <div class="container">
+		<div class="row">
+			<h2><%= f.label "Search for" %></h2>
+		  <div id="custom-search-input">
+	      <div class="input-group col-md-12">
+	          <%= text_field_tag :q, params[:q], class: "search-query form-control" %>
+	          <span class="input-group-btn">
+	              <button class="btn btn-danger" type="button">
+	                <%= submit_tag "Go", name: nil, class: "glyphicon glyphicon-search" %>
+	              </button>
+	          </span>
+	      </div>
+	  	</div>
+		</div>
+	</div>
 <% end %>
+
