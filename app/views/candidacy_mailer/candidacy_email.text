@@ -1,0 +1,2 @@
+Hi <%= @recruiter.name %>
+Tu a reçu la candidature de <%= @user.firstname %>, tu peux aller voir son profile <%= link_to "ici", user_url(@user)%>!
