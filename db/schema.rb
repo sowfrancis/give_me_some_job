@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128191845) do
+ActiveRecord::Schema.define(version: 20161228151614) do
 
   create_table "candidacies", force: :cascade do |t|
     t.integer  "job_id"
@@ -34,6 +34,30 @@ ActiveRecord::Schema.define(version: 20161128191845) do
   end
 
   add_index "jobs", ["recruiter_id"], name: "index_jobs_on_recruiter_id"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "user_id"
+    t.integer  "recruiter_id"
+    t.text     "content"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "messages", ["job_id"], name: "index_messages_on_job_id"
+  add_index "messages", ["recruiter_id"], name: "index_messages_on_recruiter_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "job_id"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notifications", ["job_id"], name: "index_notifications_on_job_id"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "recruiters", force: :cascade do |t|
     t.string   "name"

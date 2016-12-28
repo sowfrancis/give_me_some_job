@@ -8,6 +8,7 @@ class Job < ActiveRecord::Base
 	has_many :taggings
 	has_many :tags, through: :taggings, :dependent => :destroy
 	belongs_to :recruiter
+	has_many :messages
 
 	validates_presence_of :name, :description, :address, :contact
 

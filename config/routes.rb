@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index,:create, :new]
   resources :searchs, only: [:index]
   resources :candidacies, only: [:create]
+  resources :messages, only: [:create, :new, :index]
   get 'tags/', to: 'jobs#index', as: "search_tag"
   get 'searchs/search' => 'searchs#search'
 

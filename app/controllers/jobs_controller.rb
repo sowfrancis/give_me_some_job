@@ -27,6 +27,8 @@ class JobsController < ApplicationController
 	def show
 		@job = Job.find(params[:id])
 		@candidacy = Candidacy.new
+		@messages = Message.all
+		@message = Message.new
 	end
 
 	def edit
