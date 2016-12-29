@@ -12,11 +12,7 @@
           <% @messages.each do |message| %>
             <li>
               <div class="commenterImage">
-                <% if current_recruiter %>
-                  <%= image_tag message.recruiter.recruiterimg %>
-                <% elsif current_user %>
-                  <%= image_tag message.user.userimg %> 
-                <% end %>
+                <%= message.user.userimg.present? || message.recruiter.recruiterimg.present? ? image_tag(message.user.userimg) || image_tag(message.recruiter.recruiterimg) : "yeah" %>
               </div>
               <div class="commentText">
                 <p class=""><%= message.content %></p> <span class="date sub-text"><%= message.created_at %></span>
