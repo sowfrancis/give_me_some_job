@@ -6,5 +6,5 @@ services:
   - postgresql
 
 before_script:
-  - cp config/database.yml.travis config/database.yml
+  - cp config/database.travis.yml config/database.yml
   psql -c 'create database jobnexttome_development;' -U postgres
