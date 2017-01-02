@@ -12,8 +12,8 @@ default: &default
 development:
   <<: *default
   database: jobnexttome_development
-  username: francis
-  password: PASSWORD
+  username: sow
+  password: password
   host: localhost
   port: 5432
 
@@ -23,8 +23,8 @@ development:
 test:
   <<: *default
   database: jobnexttome_test
-  username: francis
-  password: PASSWORD
+  username: sow
+  password: password
   host: localhost
   port: 5432
 
