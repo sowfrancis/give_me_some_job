@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 		if @message.save
 			redirect_to job_path(@message.job_id)
 		else
-			render 'new'
+			redirect_to job_path(@message.job_id), notice: "Votre message est vide!"
 		end
 	end
 
