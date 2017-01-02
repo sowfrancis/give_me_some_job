@@ -10,7 +10,8 @@ class MessagesController < ApplicationController
 	end
 
 	def create
-		current_recruiter.present? ? @message = current_recruiter.messages.new(message_params) : @message = current_user.messages.new(message_params)
+		sender = current_recruiter || current_user
+		@message = sender.messages.new(message_params)
 		if @message.save
 			redirect_to job_path(@message.job_id)
 		else
