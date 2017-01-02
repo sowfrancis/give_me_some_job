@@ -27,6 +27,8 @@ class JobsController < ApplicationController
 	def show
 		@job = Job.find(params[:id])
 		@candidacy = Candidacy.new
+		@messages = @job.messages.map { |message| MessageDecorator.new(message)  }
+		@message = Message.new
 	end
 
 	def edit
