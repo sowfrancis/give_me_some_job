@@ -26,8 +26,8 @@ class JobsController < ApplicationController
 	
 	def show
 		@job = Job.find(params[:id])
-		@user = User.find(params[:id]) if User.exists?(params[:id])
-		@recruiter = Recruiter.find(params[:id]) if Recruiter.exists?(params[:id])
+		@user = User.find_by(id: params[:id])
+		@recruiter = Recruiter.find_by(params[:id])
 		@candidacy = Candidacy.new
 		@messages = Message.all
 		@message = Message.new
