@@ -1,14 +1,5 @@
 class MessagesController < ApplicationController
 
-	def index
-		@messages = Message.all
-	end
-
-	def new
-		@messages = Message.all
-		@message = Message.new
-	end
-
 	def create
 		sender = current_recruiter || current_user
 		@message = sender.messages.new(message_params)

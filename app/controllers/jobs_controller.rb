@@ -26,8 +26,6 @@ class JobsController < ApplicationController
 	
 	def show
 		@job = Job.find(params[:id])
-		@user = User.find_by(id: params[:id])
-		@recruiter = Recruiter.find_by(params[:id])
 		@candidacy = Candidacy.new
 		@messages = @job.messages.map { |message| MessageDecorator.new(message)  }
 		@message = Message.new
