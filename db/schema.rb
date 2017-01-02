@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161228151614) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "candidacies", force: :cascade do |t|
     t.integer  "job_id"
     t.integer  "user_id"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20161228151614) do
     t.string   "contact"
   end
 
-  add_index "jobs", ["recruiter_id"], name: "index_jobs_on_recruiter_id"
+  add_index "jobs", ["recruiter_id"], name: "index_jobs_on_recruiter_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "job_id"
@@ -44,9 +47,9 @@ ActiveRecord::Schema.define(version: 20161228151614) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "messages", ["job_id"], name: "index_messages_on_job_id"
-  add_index "messages", ["recruiter_id"], name: "index_messages_on_recruiter_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+  add_index "messages", ["job_id"], name: "index_messages_on_job_id", using: :btree
+  add_index "messages", ["recruiter_id"], name: "index_messages_on_recruiter_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
@@ -56,8 +59,8 @@ ActiveRecord::Schema.define(version: 20161228151614) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "notifications", ["job_id"], name: "index_notifications_on_job_id"
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
+  add_index "notifications", ["job_id"], name: "index_notifications_on_job_id", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "recruiters", force: :cascade do |t|
     t.string   "name"
@@ -85,8 +88,8 @@ ActiveRecord::Schema.define(version: 20161228151614) do
     t.float    "longitude"
   end
 
-  add_index "recruiters", ["email"], name: "index_recruiters_on_email", unique: true
-  add_index "recruiters", ["reset_password_token"], name: "index_recruiters_on_reset_password_token", unique: true
+  add_index "recruiters", ["email"], name: "index_recruiters_on_email", unique: true, using: :btree
+  add_index "recruiters", ["reset_password_token"], name: "index_recruiters_on_reset_password_token", unique: true, using: :btree
 
   create_table "searches", force: :cascade do |t|
     t.integer  "job_id"
@@ -102,8 +105,8 @@ ActiveRecord::Schema.define(version: 20161228151614) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "taggings", ["job_id"], name: "index_taggings_on_job_id"
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["job_id"], name: "index_taggings_on_job_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -138,7 +141,15 @@ ActiveRecord::Schema.define(version: 20161228151614) do
     t.text     "address"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "jobs", "recruiters"
+  add_foreign_key "messages", "jobs"
+  add_foreign_key "messages", "recruiters"
+  add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "jobs"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "taggings", "jobs"
+  add_foreign_key "taggings", "tags"
 end
