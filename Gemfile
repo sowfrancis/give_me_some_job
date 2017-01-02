@@ -13,6 +13,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'bootstrap-tagsinput-rails'
 gem 'tagsinput-rails'
 gem 'has_scope'
+gem 'sqlite3'
 gem 'meta_request'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
