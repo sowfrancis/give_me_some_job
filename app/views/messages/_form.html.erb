@@ -12,7 +12,7 @@
           <% @messages.each do |message| %>
             <li>
               <div class="commenterImage">
-                 
+                <%= image_tag message.sender_image %>
               </div>
               <div class="commentText">
                 <p class=""><%= message.content %></p> <span class="date sub-text"><%= message.created_at %></span>

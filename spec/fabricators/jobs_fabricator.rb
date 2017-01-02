@@ -6,4 +6,5 @@ Fabricator(:job) do
 	longitude "2.333333"
 	address	"Paris,France"
   contact	"0707070707"
+  recruiter 
 end
