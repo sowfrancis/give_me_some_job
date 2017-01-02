@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: job-next-to-me_production
+  username: job-next-to-me
+  password: <%= ENV['JOBNEXTTOME_DATABASE_PASSWORD'] %>
