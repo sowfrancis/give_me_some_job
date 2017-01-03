@@ -13,7 +13,6 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'bootstrap-tagsinput-rails'
 gem 'tagsinput-rails'
 gem 'has_scope'
-gem 'sqlite3'
 gem 'meta_request'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -27,7 +26,10 @@ gem 'capybara'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'searchkick'
-gem 'pg'
+
+group :production do
+	gem 'pg'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
