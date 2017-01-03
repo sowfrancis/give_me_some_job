@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   mount_uploader :userimg, UserImgUploader
 
   has_many :tags
-  has_many :messages
+  has_many :messages, as: :sender
 
   geocoded_by :address   # can also be an IP address
 	after_validation :geocode  

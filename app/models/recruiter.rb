@@ -6,7 +6,7 @@ class Recruiter < ActiveRecord::Base
          
   has_many :tags
   has_many :jobs
-  has_many :messages
+  has_many :messages, as: :sender
 
   mount_uploader :recruiterimg, RecruiterImgUploader
 

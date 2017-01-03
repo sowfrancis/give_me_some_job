@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103001524) do
+ActiveRecord::Schema.define(version: 20170103114027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,10 +45,13 @@ ActiveRecord::Schema.define(version: 20170103001524) do
     t.text     "content"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "sender_id"
+    t.string   "sender_type"
   end
 
   add_index "messages", ["job_id"], name: "index_messages_on_job_id", using: :btree
   add_index "messages", ["recruiter_id"], name: "index_messages_on_recruiter_id", using: :btree
+  add_index "messages", ["sender_type", "sender_id"], name: "index_messages_on_sender_type_and_sender_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "recruiters", force: :cascade do |t|
