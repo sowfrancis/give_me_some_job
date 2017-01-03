@@ -36,7 +36,7 @@ RSpec.describe JobsController, type: :controller do
 				expect(response.body).to include recruiter.recruiterimg.url
 			end
 
-			let!(:message) {Fabricate(:message, content: "Salut", recruiter: recruiter, job: job )}
+			let!(:message) {Fabricate(:message, content: "Salut", sender: recruiter, job: job )}
 		end
 
 		context "user message" do
@@ -45,7 +45,7 @@ RSpec.describe JobsController, type: :controller do
 				expect(response.body).to include user.userimg.url
 			end
 
-			let!(:message) {Fabricate(:message, content: "Salut", user: user, job: job )}
+			let!(:message) {Fabricate(:message, content: "Salut", sender: user, job: job )}
 		end
 
 		let(:user) {Fabricate(:user)}

@@ -1,10 +1,10 @@
 class MessageDecorator < SimpleDelegator
 	
 	def sender_image
-  	if recruiter 	
-      recruiter.recruiterimg 
+  	if sender_type == "Recruiter" 	
+      sender.recruiterimg 
     else 
-      user.userimg 
+      sender.userimg 
 		end
 	end
 end

@@ -3,7 +3,7 @@ Fabricator(:user) do
   firstname "Francis"
  	lastname "Sow"
  	description "Yo"
-  email "sow@gmail.com"
+  email { sequence(:email){ |i| "user_#{i}@example.com" } }
   password 'changeme'
   password_confirmation 'changeme'
   latitude "48.866667"

@@ -7,8 +7,8 @@ RSpec.describe MessagesController, type: :controller do
   it "create a new message" do
     post :create, message: Fabricate.attributes_for(:message, job: job)
     expect(Message.last.attributes).to include({
-      "user_id" => user.id,
-      "recruiter_id" => nil,
+      "sender_id" => user.id,
+      "sender_type" => "User",
       "job_id" => job.id})
   end  
 
