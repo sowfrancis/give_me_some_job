@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228151614) do
+ActiveRecord::Schema.define(version: 20170103001524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,17 +50,6 @@ ActiveRecord::Schema.define(version: 20161228151614) do
   add_index "messages", ["job_id"], name: "index_messages_on_job_id", using: :btree
   add_index "messages", ["recruiter_id"], name: "index_messages_on_recruiter_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
-  create_table "notifications", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "job_id"
-    t.text     "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "notifications", ["job_id"], name: "index_notifications_on_job_id", using: :btree
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "recruiters", force: :cascade do |t|
     t.string   "name"
@@ -148,8 +137,6 @@ ActiveRecord::Schema.define(version: 20161228151614) do
   add_foreign_key "messages", "jobs"
   add_foreign_key "messages", "recruiters"
   add_foreign_key "messages", "users"
-  add_foreign_key "notifications", "jobs"
-  add_foreign_key "notifications", "users"
   add_foreign_key "taggings", "jobs"
   add_foreign_key "taggings", "tags"
 end
