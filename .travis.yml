@@ -9,3 +9,4 @@ before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c "CREATE USER sow WITH PASSWORD 'password';" -U postgres
   - psql -c 'create database jobnexttome_test with owner "sow";' -U postgres
+  - psql -c 'GRANT ALL PRIVILEGES ON DATABASE jobnexttome_test TO sow ;' -U postgres
