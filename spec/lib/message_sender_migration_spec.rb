@@ -3,40 +3,45 @@ require_relative '../../lib/message_sender_migration'
 
 RSpec.describe MessageSenderMigration do
 
-	it "imports the sender's data for user" do
-		user = Fabricate(:user)
-		job = Fabricate(:job)
-		message = Message.create(job_id: job.id, user_id: user.id, content: "YOYO")
-		MessageSenderMigration.sender_message
-		message.reload
-		expect(message.sender_id).to eq user.id
-	end
+  describe "sender message" do
 
-	it "import the sender's data for recruiter" do
-		recruiter = Fabricate(:recruiter)
-		job = Fabricate(:job)
-		message = Message.create(job_id: job.id, recruiter_id: recruiter.id, content: "Hello")
-		MessageSenderMigration.sender_message
-		message.reload
-		expect(message.sender_id).to eq recruiter.id
-	end
+    before do
+      message
+      MessageSenderMigration.sender_message
+      message.reload
+    end
 
-	it "import the sender's type for user" do
-		user = Fabricate(:user)
-		job = Fabricate(:job)
-		message = Message.create(job_id: job.id, user_id: user.id, content: "YOYO")
-		MessageSenderMigration.sender_message
-		message.reload
-		expect(message.sender_type).to eq user.class.to_s
-	end
+    context "import user data to sender" do
 
-	it "import the sender's type for recruiter" do
-		recruiter = Fabricate(:recruiter)
-		job = Fabricate(:job)
-		message = Message.create(job_id: job.id, recruiter_id: recruiter.id, content: "YOYO")
-		MessageSenderMigration.sender_message
-		message.reload
-		expect(message.sender_type).to eq recruiter.class.to_s
-	end
+      it "imports the sender's id" do
+        expect(message.sender_id).to eq user.id
+      end
 
+      it "import the sender's type" do
+        expect(message.sender_type).to eq "User"
+      end
+
+      let(:user) {Fabricate(:user)}
+      let!(:message) do
+        Fabricate(:message, sender: nil, recruiter_id: nil, user_id: user.id, sender_id: nil)
+      end
+    end
+
+    context "import recruiter data to sender" do
+
+      it "import the sender's id" do
+        expect(message.sender_id).to eq recruiter.id
+      end
+
+      it "import the sender's type" do
+        expect(message.sender_type).to eq recruiter.class.to_s
+      end
+
+      let!(:message) do
+        Fabricate(:message, sender: nil, recruiter_id: recruiter.id, user_id: nil, sender_id: nil)
+      end
+    end
+
+    let!(:recruiter) {Fabricate(:recruiter)}
+  end
 end

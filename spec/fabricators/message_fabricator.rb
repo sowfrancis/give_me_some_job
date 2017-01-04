@@ -1,5 +1,5 @@
 Fabricator(:message) do
-  job       nil
+  job(:fabricator => :job)
   sender(:fabricator => :user)
   content   "MyText"
 end
