@@ -13,6 +13,13 @@ class CandidaciesController < ApplicationController
 		end
 	end
 
+	def create_multiple
+		tag = Tag.find_by(name: params[:tag_name])
+		@job = tag.jobs.first
+		@candidacy = Candidacy.create(job_id: @job.id, user_id: current_user.id)
+		redirect_to user_path(current_user)
+	end
+
 	private
 
 	def params_candidacy
