@@ -24,10 +24,10 @@ RSpec.describe JobsController, type: :controller do
 		end
 
 		it "should update a job" do
-			@attr = {name: "ballafré"}
+			@attr = {name: "Bolloré"}
 			put :update, id: job, job: @attr
 			job.reload
-			expect(job.name).to eq "ballafré"
+			expect(job.name).to eq "Bolloré"
 		end
 
 		context "recruiter message" do
