@@ -21,9 +21,10 @@ class JobsController < ApplicationController
 
 	def new
 		@job = Job.new
+		authorize @job
 		@tag = @job.tags.new
 	end
-	
+
 	def show
 		@job = Job.find(params[:id])
 		@candidacy = Candidacy.new
@@ -32,18 +33,20 @@ class JobsController < ApplicationController
 	end
 
 	def edit
-		@job= Job.find(params[:id])
+		@job = Job.find(params[:id])
+		authorize @job
 	end
 
 	def update
 		@job = Job.find(params[:id])
+		authorize @job
 		if @job.update_attributes(job_params)
 			redirect_to job_path(@job)
 		else
 			render "edit"
 		end
 	end
-	
+
 	private
 
 	def job_params

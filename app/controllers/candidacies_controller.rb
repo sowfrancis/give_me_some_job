@@ -1,22 +1,25 @@
 class CandidaciesController < ApplicationController
 
-
 	def create
 		@job = Job.find(params[:candidacy][:job_id])
 		@recruiter = @job.recruiter
-		@candidat = Candidacy.new(job_id: @job.id , user_id: current_user.id)
-		if @candidat.save
-			CandidacyMailer.candidacy_email(@recruiter, current_user).deliver_now
-			redirect_to job_path(@job), notice: "T'as candidature a bien été envoyée!"
-		else
-			render 'new'
-		end
+		@candidacy = SendCandidacy.new(@job, current_user)
+		@candidacy.send_new_candidacy
+		redirect_to user_path(current_user)
 	end
 
 	def create_multiple
 		tag = Tag.find_by(name: params[:tag_name])
-		@job = tag.jobs.first
-		@candidacy = Candidacy.create(job_id: @job.id, user_id: current_user.id)
+		tag.jobs.each do |job|
+			@send_candidacy_service = SendCandidacy.new(job, current_user)
+			@candidacy = @send_candidacy_service.send_new_candidacy
+			if @candidacy.valid?
+				flash[:notice] = "vos candidatures multiples ont bien été envoyer!"
+			else
+				flash[:notice] = "vos candidatures multiples n'ont pas été envoyer,
+													veuillez rééssayer plus tard!"
+			end
+		end
 		redirect_to user_path(current_user)
 	end
 
