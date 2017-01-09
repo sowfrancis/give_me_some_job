@@ -21,7 +21,6 @@ class JobsController < ApplicationController
 
 	def new
 		@job = Job.new
-		authorize @job
 		@tag = @job.tags.new
 	end
 
@@ -34,12 +33,10 @@ class JobsController < ApplicationController
 
 	def edit
 		@job = Job.find(params[:id])
-		authorize @job
 	end
 
 	def update
 		@job = Job.find(params[:id])
-		authorize @job
 		if @job.update_attributes(job_params)
 			redirect_to job_path(@job)
 		else
