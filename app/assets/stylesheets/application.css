@@ -17,11 +17,12 @@
 
 
 body{
-	background-color: #F5F5DC;
-
+	background-color: #FFFFFF
 }
 .container{
 	width: 90%;
+	height: 100%;
+
 }
 
 .form{
@@ -34,7 +35,7 @@ body{
 }
 
 .job_cards{
-	margin: 15px;
+	padding: 15px;
 }
 
 .job_image{
@@ -46,7 +47,6 @@ body{
 }
 
 .card-shit{
-	margin: 50px;
 	background-color: #FFFFFF;
 	box-shadow: 10px 10px 5px #888888;
 }
@@ -79,11 +79,6 @@ body{
 	text-align: center;
 }
 
-.job_right{
-	background-color: #FFFF;
-	padding: 30px;
-	box-shadow: 10px 10px 5px #888888;
-}
 
 .user{
 	text-align: -moz-center;
@@ -93,6 +88,17 @@ body{
 	text-align: -moz-center;
 }
 /* user profile */
+
+.detailBox{
+	background-color: #F5F5DC;
+}
+
+
+.job_right{
+	background-color: #F5F5DC;
+	padding: 30px;
+	box-shadow: 10px 10px 5px #888888;
+}
 
 .card {
 		padding-top: 20px;
@@ -373,7 +379,7 @@ body{
 
 .row{
 		margin-bottom: 50px;
-		
+
 }
 
 /* Jobs index */
@@ -385,7 +391,7 @@ body{
 
 .block-update-card{
 	border: 1px solid;
-	border-color: whitesmoke; 
+	border-color: whitesmoke;
 }
 
 .panel-login {

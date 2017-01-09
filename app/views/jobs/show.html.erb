@@ -1,46 +1,44 @@
-<div class="container">
-	<div class="row">
-		<div class="bloc_job col-md-7">
-			<div class="job_right">
-				<div class="row">
-					<div class="job_img col-md-4">
-						<%= image_tag @job.jobimg.url, class: "job_img" %>
+<div class="row">
+	<div class="bloc_job col-md-7">
+		<div class="job_right">
+			<div class="row">
+				<div class="job_img col-md-4">
+					<%= image_tag @job.jobimg.url, class: "job_img" %>
+				</div>
+				<div class="col-md-8 job_place">
+					<div class="job_name">
+						<h3><%= @job.name %></h3>
 					</div>
-					<div class="col-md-8 job_place">
-						<div class="job_name">
-							<h3><%= @job.name %></h3>
-						</div>
-						<div class="job_info">
-							<%= @job.address %> | <%= @job.created_at.strftime('%d-%m-%Y') %>
-						</div>
-						<div class="job_info">
-							<%= @job.recruiter.email %> | <%= @job.contact%>
-						</div>
+					<div class="job_info">
+						<%= @job.address %> | <%= @job.created_at.strftime('%d-%m-%Y') %>
+					</div>
+					<div class="job_info">
+						<%= @job.recruiter.email %> | <%= @job.contact%>
 					</div>
 				</div>
-				<hr/>
-				<h4>Description</h4>
-				<div class="job_description">
-					<%= @job.description %>
-				</div>
+			</div>
+			<hr/>
+			<h4>Description</h4>
+			<div class="job_description">
+				<%= @job.description %>
+			</div>
 
-				<div class="edit_job">
-					<% if recruiter_signed_in? %>
-						<% if current_recruiter.id == @job.recruiter.id %>
-							<%= link_to "Editer", edit_job_path(@job), class: "btn btn-primary" %>
-						<% end %>
-					<% end %>
-				</div>
-				<% if user_signed_in? %>
-					<%= form_for @candidacy do |f| %>
-						<%= f.hidden_field :job_id, value: @job.id%>
-						<%= f.submit %>
+			<div class="edit_job">
+				<% if recruiter_signed_in? %>
+					<% if current_recruiter.id == @job.recruiter.id %>
+						<%= link_to "Editer", edit_job_path(@job), class: "btn btn-primary" %>
 					<% end %>
 				<% end %>
 			</div>
+			<% if user_signed_in? %>
+				<%= form_for @candidacy do |f| %>
+					<%= f.hidden_field :job_id, value: @job.id%>
+					<%= f.submit %>
+				<% end %>
+			<% end %>
 		</div>
-		<div class="bloc_mess col-md-5">
-			<%= render 'messages/form' %>
-		</div>
+	</div>
+	<div class="bloc_mess col-md-5">
+		<%= render 'messages/form' %>
 	</div>
 </div>
