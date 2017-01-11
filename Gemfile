@@ -26,6 +26,7 @@ gem 'capybara'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'searchkick'
+gem "pundit"
 
 group :production do
 	gem 'pg'
