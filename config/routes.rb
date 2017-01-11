@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :recruiters, only: [:create, :show, :edit, :update]
   resources :tags, only: [:index,:create, :new]
   resources :searchs, only: [:index]
-  resources :candidacies, only: [:create]
+  resources :candidacies, only: [:create, :create_multiple] do
+    collection do
+      post '/create_multiple' => 'candidacies#create_multiple'
+    end
+  end
   resources :messages, only: [:create]
   get 'tags/', to: 'jobs#index', as: "search_tag"
   get 'searchs/search' => 'searchs#search'
