@@ -24,6 +24,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    jobs_path(resource)
+    if current_user.sign_in_count > 1
+      jobs_path(resource)
+    else
+      edit_user_path(resource)
+    end
   end
 end

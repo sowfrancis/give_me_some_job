@@ -22,4 +22,12 @@ class Recruiters::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_in_path_for(resource)
+    if current_recruiter.sign_in_count > 1
+      jobs_path(resource)
+    else
+      edit_recruiter_path(resource)
+    end
+  end
 end

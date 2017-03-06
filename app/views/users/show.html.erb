@@ -17,7 +17,9 @@
       <div class="bottom">
         <%= link_to "Editer", edit_user_path(@user) %>
       </div>
+      <div class="form_candidacies">
+        <%= render "candidacies/multiple_candidacies" %>
+      </div>
     </div>
   </div>
-  <%= render "candidacies/multiple_candidacies" %>
 </div>

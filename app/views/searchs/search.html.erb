@@ -1,9 +1,7 @@
-<%= form_for searchs_path, method: :get do |f| %>
-  <p>
-    <%= f.label "Search for" %>
-    <%= text_field_tag :q, params[:q] %>
-    <%= submit_tag "Go", name: nil %>
-  </p>
+<%= bootstrap_form_tag url: "/searchs" do |f| %>
+  <%= f.label "Search for" %>
+  <%= f.text_field :q, params[:q] %>
+  <%= f.submit "Go", name: nil %>
 <% end %>
 
 <ul>
