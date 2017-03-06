@@ -373,7 +373,7 @@ body{
 
 .row{
 		margin-bottom: 50px;
-		
+
 }
 
 /* Jobs index */
@@ -385,7 +385,7 @@ body{
 
 .block-update-card{
 	border: 1px solid;
-	border-color: whitesmoke; 
+	border-color: whitesmoke;
 }
 
 .panel-login {
@@ -558,3 +558,7 @@ body{
 Creating a block for social media buttons
 */
 
+#tag_name{
+	width: 40%;
+	margin: auto;
+}
