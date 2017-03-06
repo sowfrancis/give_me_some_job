@@ -4,6 +4,9 @@ RSpec.describe JobsController, type: :controller do
 
 	describe "all jobs" do
 		render_views
+		before do
+			sign_in recruiter
+		end
 
 		it "return all job" do
 			job
@@ -12,8 +15,6 @@ RSpec.describe JobsController, type: :controller do
 		end
 
 		it "create a job" do
-			@recruiter = Fabricate(:recruiter)
-			sign_in @recruiter
 			post :create, job: Fabricate.attributes_for(:job)
 			expect(Job.count).to eq 1
 		end
@@ -49,7 +50,7 @@ RSpec.describe JobsController, type: :controller do
 		end
 
 		let(:user) {Fabricate(:user)}
-		let(:recruiter) {Fabricate(:recruiter)}
-		let(:job) {Fabricate(:job)}
+		let!(:recruiter) {Fabricate(:recruiter)}
+		let(:job) {Fabricate(:job, recruiter: recruiter)}
 	end
 end
