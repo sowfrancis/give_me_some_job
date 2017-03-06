@@ -2,9 +2,13 @@ class RecruitersController < ApplicationController
 
 	before_action :authenticate_recruiter!
 
-	def show 
+	def show
 		@recruiter = Recruiter.find(params[:id])
 		@jobs = @recruiter.jobs.order(created_at: :desc)
+		stock_jobs = nil
+		@stock_candidate = nil
+		@jobs_candidate = @jobs.map { |job|  stock_jobs = Candidacy.all.select{|candidacy| candidacy.job_id == job.id}}
+		@candidates = stock_jobs.map {|candidate| @stock_candidate = User.all.select { |user| user.id == candidate.user_id }}
 	end
 
 	def edit

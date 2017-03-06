@@ -43,10 +43,13 @@ body{
 
 .job_img{
 	width: 100px;
+	height: 85%;
 }
 
 .card-shit{
-	margin: 50px;
+	width: 30%;
+	height: 272px;
+	margin-right: 20px;
 	background-color: #FFFFFF;
 	box-shadow: 10px 10px 5px #888888;
 }
@@ -388,6 +391,10 @@ body{
 	border-color: whitesmoke;
 }
 
+.para{
+	text-overflow: ellipsis;
+}
+
 .panel-login {
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
@@ -561,4 +568,14 @@ Creating a block for social media buttons
 #tag_name{
 	width: 40%;
 	margin: auto;
+}
+
+
+.candidate{
+	width: 14%;
+	margin-right: 10px;
+	background: whitesmoke;
+	height: 130px;
+	box-shadow: 10px 10px 5px #888888;
+	margin-top: 10px;
 }
