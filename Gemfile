@@ -29,6 +29,7 @@ gem 'searchkick'
 gem "pundit"
 gem 'sendgrid-ruby'
 gem 'figaro'
+gem 'rails_12factor', group: :production
 
 group :production do
 	gem 'pg'
