@@ -27,6 +27,8 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'searchkick'
 gem "pundit"
+gem 'sendgrid-ruby'
+gem 'figaro'
 
 group :production do
 	gem 'pg'
