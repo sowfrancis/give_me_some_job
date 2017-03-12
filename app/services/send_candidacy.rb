@@ -7,7 +7,6 @@ class SendCandidacy
 
   def send_new_candidacy
     candidacy = create_candidacy
-    send_candidacy_email
     candidacy
   end
 
