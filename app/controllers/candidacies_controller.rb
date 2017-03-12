@@ -9,7 +9,7 @@ class CandidaciesController < ApplicationController
 	end
 
 	def create_multiple
-		tag = Tag.find_by(name: params[:tag_name])
+		tag = Tag.find_by(name: params[:tag_name]) if Tag.find_by(name: params[:tag_name]).present?
 		tag.jobs.each do |job|
 			@send_candidacy_service = SendCandidacy.new(job, current_user)
 			@candidacy = @send_candidacy_service.send_new_candidacy
