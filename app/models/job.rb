@@ -42,5 +42,3 @@ class Job < ActiveRecord::Base
 	  self.tags.map(&:name).join(", ")
 	end
 end
-
-Job.import
