@@ -34,7 +34,7 @@
 				<% if user_signed_in? %>
 					<%= form_for @candidacy do |f| %>
 						<%= f.hidden_field :job_id, value: @job.id%>
-						<%= f.submit %>
+						<%= f.submit "Candidater", class: "btn btn-primary" %>
 					<% end %>
 				<% end %>
 			</div>
