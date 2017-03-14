@@ -15,7 +15,9 @@
         <div class="desc"><h4><%= @user.address %></h4></div>
       </div>
       <div class="bottom">
-        <%= link_to "Editer", edit_user_path(@user) %>
+        <% if current_user.id == @user.id %>
+          <%= link_to "Editer", edit_user_path(@user) %>
+        <% end %>
       </div>
       <% if current_user.present? %>
         <div class="form_candidacies">
