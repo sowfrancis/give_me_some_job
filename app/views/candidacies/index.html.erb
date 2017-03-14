@@ -1,0 +1,19 @@
+<% @candidates.each do |candidate, user| %>
+  <div class="row">
+    <%= link_to user_path(candidate) do %>
+      <div class= "col-md-4">
+        <%= image_tag candidate.userimg.url, class: "job_image" %>
+      </div>
+      <div class="col-md-8">
+        <div class="user_fullname form-group">
+          <%= candidate.fullname %>
+        </div>
+        <div class="user_description form-group">
+          <h4>Description</h4>
+          <%= candidate.description %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+<% end %>
