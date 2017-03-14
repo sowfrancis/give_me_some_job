@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :recruiters, only: [:create, :show, :edit, :update]
   resources :tags, only: [:index,:create, :new]
   resources :searchs, only: [:index]
-  resources :candidacies, only: [:create, :create_multiple] do
+  resources :candidacies, only: [:create, :index, :create_multiple] do
     collection do
       post '/create_multiple' => 'candidacies#create_multiple'
     end

@@ -26,7 +26,7 @@ body{
 
 .form{
 	margin: auto;
-	width: 85%;
+	width: 50%;
 }
 
 .form_group{
@@ -43,7 +43,7 @@ body{
 
 .job_img{
 	width: 100px;
-	height: 85%;
+	height: 92px;
 }
 
 .card-shit{
@@ -578,4 +578,11 @@ Creating a block for social media buttons
 	height: 130px;
 	box-shadow: 10px 10px 5px #888888;
 	margin-top: 10px;
+}
+
+.card-shit2{
+	background-color: #FFFFFF;
+	box-shadow: 10px 10px 5px #888888;
+
+	width: 70%;
 }

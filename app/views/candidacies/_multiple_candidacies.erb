@@ -1,5 +1,5 @@
 <%= bootstrap_form_tag url: "/candidacies/create_multiple",  multipart: true do |f| %>
-  <%= f.label "multiple candidacies by tag"%>:
+  <%= f.label "Multiple candidatures"%>:
     <%= f.text_field :tag_name %>
-    <%= f.submit %>
+    <%= f.submit "Envoyer", class: "btn btn-primary" %>
 <% end %>

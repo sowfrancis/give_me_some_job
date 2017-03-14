@@ -1,11 +1,23 @@
 class CandidaciesController < ApplicationController
 
+	def index
+		stock_jobs = nil
+		@stock_candidate = nil
+		@jobs_candidate = Job.all.map { |job|  stock_jobs = Candidacy.all.select{|candidacy| candidacy.job_id == job.id}}
+		@candidates = stock_jobs.map {|candidate| @stock_candidate = User.all.select { |user| user.id == candidate.user_id }}
+	end
+
 	def create
 		@job = Job.find(params[:candidacy][:job_id])
 		@recruiter = @job.recruiter
-		@candidacy = SendCandidacy.new(@job, current_user)
-		@candidacy.send_new_candidacy
-		redirect_to user_path(current_user)
+		@candidacy_service = SendCandidacy.new(@job, current_user)
+		@candidacy = @candidacy_service.send_new_candidacy
+		if @candidacy.valid?
+			flash[:notice] = "votre candidature est envoyé!"
+			redirect_to user_path(current_user)
+		else
+			render "new"
+		end
 	end
 
 	def create_multiple

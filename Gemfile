@@ -30,6 +30,8 @@ gem "pundit"
 gem 'sendgrid-ruby'
 gem 'figaro'
 gem 'rails_12factor', group: :production
+gem 'aws-sdk', '~> 2'
+
 
 group :production do
 	gem 'pg'
