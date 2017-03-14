@@ -15,7 +15,7 @@
         <div class="desc"><h4><%= @user.address %></h4></div>
       </div>
       <div class="bottom">
-        <% if current_user.id == @user.id %>
+        <% if user_signed_in? %>
           <%= link_to "Editer", edit_user_path(@user) %>
         <% end %>
       </div>
