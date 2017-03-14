@@ -43,3 +43,4 @@ class Job < ActiveRecord::Base
 	end
 end
 
+Job.import

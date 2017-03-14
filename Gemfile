@@ -31,7 +31,7 @@ gem 'sendgrid-ruby'
 gem 'figaro'
 gem 'rails_12factor', group: :production
 gem 'aws-sdk', '~> 2'
-
+gem 'bonsai-elasticsearch-rails'
 
 group :production do
 	gem 'pg'
