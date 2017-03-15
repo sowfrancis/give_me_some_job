@@ -15,6 +15,7 @@ class RecruitersController < ApplicationController
 
 	def edit
 		@recruiter = Recruiter.find(params[:id])
+		authorize @recruiter, :edit?
 	end
 
 	def update

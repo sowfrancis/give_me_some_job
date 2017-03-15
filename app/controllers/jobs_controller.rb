@@ -20,6 +20,7 @@ class JobsController < ApplicationController
 
 	def new
 		@job = Job.new
+		authorize @job, :new?
 		@tag = @job.tags.new
 	end
 
@@ -32,6 +33,7 @@ class JobsController < ApplicationController
 
 	def edit
 		@job = Job.find(params[:id])
+		authorize @job, :edit?
 	end
 
 	def destroy
