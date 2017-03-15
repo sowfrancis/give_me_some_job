@@ -1,38 +1,34 @@
-<div class="search_bar">
-	<%= render 'search_bar/search' %>
-</div>
 <% if params[:q].present? %>
 	<div class="container">
 		<%= render 'searchs/search_result' %>
 	</div>
 <% else %>
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 		 	<% @jobs.each do |job| %>
-		 		<div class="card-shit form-group col-md-4">
-					<div class="media block-update-card">
-				  	<%= link_to job_path(job), class: "pull-left" do %>
-				    	<%= image_tag job.jobimg.url, class: "job_img" %>
-				    <% end %>
-					  <div class="media-body update-card-body">
-					    <h4 class="media-heading"><%= job.name %></h4>
-					    <div class="btn-toolbar card-body-social" role="toolbar">
-					      <div class="btn-group fa fa-github-alt git"></div>
-					      <div class="btn-group linkedin fa fa-linkedin-square"></div>
-					      <div class="btn-group twitter fa fa-twitter"></div>
-					      <div class="btn-group facebook fa fa-facebook"></div>
-					      <div class="btn-group google-plus fa fa-google-plus"></div>
-					    </div>
-					    <h6>crée le <%= job.created_at.strftime('%d-%m-%Y') %></h6>
-					  </div>
-					</div>
-				  <div class="block-update-card status">
-				    <div class="update-card-body">
-				      <h4><%= job.address %></h4>
-				      <p class="para"><%= job.description %></p>
-				    </div>
-					</div>
-				</div>
+		 		<div class="job_card form-group">
+			 		<%= link_to job_path(job) do %>
+			 			<div class="header_job">
+			 				<%= job.name.upcase %>
+			 			</div>
+			 		<% end %>
+			 		<div class="job_content">
+			 			<div class="row">
+			 				<div class="job_img col-md-5">
+			 					<%= image_tag job.jobimg.url, class: "job_image img-responsive" %>
+			 				</div>
+			 				<div class="job_description col-md-7">
+			 					<%= truncate job.description, length: 160 %>
+			 					<% if job.description.length >= 160 %>
+			 						<%= link_to 'read_more', job_path(job) %>
+			 					<% end %>
+			 				</div>
+			 			</div>
+			 		</div>
+			 		<div class="job_footer">
+			 			<%= job.created_at.to_date.strftime("%d/%m/%Y") %>
+			 		</div>
+		 		</div>
 			<% end %>
 		</div>
 	</div>
