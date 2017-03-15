@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hvmgooxmf
+  api_key: '847628789278723'
+  api_secret: t9Q6oQSWTBb9LQt7kX6bW_RzOsw
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hvmgooxmf
+  api_key: '847628789278723'
+  api_secret: t9Q6oQSWTBb9LQt7kX6bW_RzOsw
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hvmgooxmf
+  api_key: '847628789278723'
+  api_secret: t9Q6oQSWTBb9LQt7kX6bW_RzOsw
+  enhance_image_tag: true
+  static_image_support: false
