@@ -12,7 +12,6 @@ class JobsController < ApplicationController
 		@job = current_recruiter.jobs.new(job_params)
 		if @job.save
 			flash[:notice] = "Ta mission a bien été crée!"
-			JobMailer.new_job_email(current_recruiter).deliver_now
 			redirect_to jobs_path
 		else
 			render "new"
