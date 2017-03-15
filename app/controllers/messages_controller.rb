@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 			if @message.save
 				redirect_to job_path(@message.job_id)
 			else
-				redirect_to job_path(@message.job_id), notice: "Votre message est vide!"
+				redirect_to job_path(@message.job_id), notice: "Votre message n'a pas été envoyé, réessayer!"
 			end
 		end
 	end
