@@ -34,6 +34,12 @@ class JobsController < ApplicationController
 		@job = Job.find(params[:id])
 	end
 
+	def destroy
+		@job = Job.find(params[:id])
+		@job.destroy
+		redirect_to recruiter_path(current_recruiter), notice: "job bien supprimé!"
+	end
+
 	def update
 		@job = Job.find(params[:id])
 		if @job.update_attributes(job_params)

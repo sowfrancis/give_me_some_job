@@ -28,6 +28,7 @@
 					<% if recruiter_signed_in? %>
 						<% if current_recruiter.id == @job.recruiter.id %>
 							<%= link_to "Editer", edit_job_path(@job), class: "btn btn-primary" %>
+							<%= link_to "Supprimer", delete_job_path(@job), class: "btn btn-primary", method: :delete, data: {confirm: "You sure?"} %>
 						<% end %>
 					<% end %>
 				</div>

@@ -8,7 +8,9 @@ class RecruitersController < ApplicationController
 		stock_jobs = nil
 		@stock_candidate = nil
 		@jobs_candidate = @jobs.map { |job|  stock_jobs = Candidacy.all.select{|candidacy| candidacy.job_id == job.id}}
-		@candidates = stock_jobs.map {|candidate| @stock_candidate = User.all.select { |user| user.id == candidate.user_id }}
+		if @jobs_candidate.present?
+			@candidates = stock_jobs.map {|candidate| @stock_candidate = User.all.select { |user| user.id == candidate.user_id }}
+		end
 	end
 
 	def edit
