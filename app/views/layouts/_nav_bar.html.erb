@@ -10,8 +10,6 @@
       </button>
       <%= link_to "JObs next To me!", root_path, class: "navbar-brand" %>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if user_signed_in? || recruiter_signed_in? %>
@@ -25,10 +23,10 @@
           <% end %>
           <li class="pull-right"><%= link_to "Se deconnecter", destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li class="active"><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Connexion/Inscrire", homepages_path %>
         <% end %>
-
       </ul>
-  </div><!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
+  </div>
 </nav>
