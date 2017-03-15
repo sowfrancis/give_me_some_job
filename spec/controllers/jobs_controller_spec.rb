@@ -31,6 +31,11 @@ RSpec.describe JobsController, type: :controller do
 			expect(job.name).to eq "Bolloré"
 		end
 
+		it "destroy a job" do
+			delete :destroy, id: job
+			expect(Job.count).to eq 0
+		end
+
 		context "recruiter message" do
 			it "displays recruiter image" do
 				get :show, id: job
