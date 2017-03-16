@@ -6,6 +6,10 @@ class JobPolicy
   end
 
   def new?
+    create?
+  end
+
+  def create?
     @current_recruiter.present?
   end
 

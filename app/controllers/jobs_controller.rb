@@ -20,7 +20,9 @@ class JobsController < ApplicationController
 
 	def new
 		@job = Job.new
-		authorize @job, :new?
+		if !current_recruiter.present?
+			authorize @job, :new?
+		end
 		@tag = @job.tags.new
 	end
 

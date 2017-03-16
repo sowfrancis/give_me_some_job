@@ -6,7 +6,6 @@ class RecruiterPolicy
   end
 
   def new?
-    @current_recruiter.present?
   end
 
   def update?

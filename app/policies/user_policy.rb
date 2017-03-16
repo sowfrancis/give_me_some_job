@@ -6,7 +6,6 @@ class UserPolicy
   end
 
   def new?
-    @current_user.present?
   end
 
   def update?
